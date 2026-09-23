@@ -1,0 +1,119 @@
+spring:
+  application:
+    name: opsmind-core
+
+  datasource:
+    url: ${OPSMIND_DB_URL:jdbc:postgresql://localhost:5432/opsmind}
+    username: ${OPSMIND_DB_USER:opsmind}
+    password: ${OPSMIND_DB_PASSWORD:opsmind}
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: validate   # schema is owned by Flyway migrations, never by Hibernate auto-DDL
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  kafka:
+    bootstrap-servers: ${OPSMIND_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+    consumer:
+      group-id: opsmind-core
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  data:
+    redis:
+      host: ${OPSMIND_REDIS_HOST:localhost}
+      port: ${OPSMIND_REDIS_PORT:6379}
+
+server:
+  port: ${OPSMIND_SERVER_PORT:8080}
+
+opsmind:
+  security:
+    jwt:
+      secret: ${OPSMIND_JWT_SECRET:}
+      expiration-minutes: ${OPSMIND_JWT_EXPIRATION_MINUTES:60}
+    webhook:
+      token: ${OPSMIND_WEBHOOK_TOKEN:}
+
+  ai:
+    gemini:
+      api-key: ${GEMINI_API_KEY:}
+      model: ${GEMINI_MODEL:gemini-3.6-flash}
+
+  evidence:
+    prometheus:
+      base-url: ${PROMETHEUS_BASE_URL:http://prometheus:9090}
+    tempo:
+      base-url: ${TEMPO_BASE_URL:http://tempo:3200}
+
+  remediation:
+    # OFF by default (Section 11) - flipping this to true lets LOW-risk,
+    # non-manual-only recommendations skip human approval. MEDIUM/HIGH and
+    # manual-only recommendations NEVER auto-approve regardless of this flag.
+    auto-approve-low-risk: ${OPSMIND_AUTO_APPROVE_LOW_RISK:false}
+    # Reuses the same fault-injection admin token the ecommerce services
+    # already require on /faults/*/disable (Section 12).
+    fault-admin-token: ${FAULT_ADMIN_TOKEN:}
+    verification:
+      window-seconds: ${OPSMIND_REMEDIATION_VERIFY_WINDOW_SECONDS:120}
+      max-5xx-rate: ${OPSMIND_REMEDIATION_MAX_5XX_RATE:0.05}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+# Merge into your application.yml (or import as a profile).
+incident-memory:
+
+  embedding:
+    model: gemini-embedding-2
+    # 1536 keeps the column HNSW-indexable (pgvector caps `vector` indexes
+    # at 2000 dims). 3072 requires halfvec and doubles storage for a gain
+    # you will not measure on a few thousand incidents.
+    dimensions: 1536
+    base-url: https://generativelanguage.googleapis.com
+    api-key: ${GEMINI_API_KEY}
+    timeout: 20s
+    max-document-chars: 22000
+
+  worker:
+    poll-interval: 10000       # ms
+    batch-size: 20
+    max-attempts: 5
+    base-backoff: 30s
+
+  retrieval:
+    top-k: 5
+    candidate-multiplier: 4    # over-fetch, then rerank
+    min-similarity: 0.62       # tune against your own corpus, see README
+    ef-search: 100
+    max-age: 540d
+    weight-similarity: 0.75
+    weight-service-overlap: 0.15
+    weight-recency: 0.10
+
+

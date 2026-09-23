@@ -1,0 +1,4 @@
+groups:
+  - name: opsmind-ecommerce-alerts
+    interval: 5s
+    rules: []

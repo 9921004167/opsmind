@@ -1,0 +1,13 @@
+# Profile used when opsmind-core itself runs inside docker-compose, where it must
+# reach other containers by service name instead of localhost.
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/${POSTGRES_DB:opsmind}
+    username: ${POSTGRES_USER:opsmind}
+    password: ${POSTGRES_PASSWORD:opsmind}
+  kafka:
+    bootstrap-servers: kafka:19092
+  data:
+    redis:
+      host: redis
+      port: 6379

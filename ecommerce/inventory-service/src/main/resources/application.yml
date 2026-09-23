@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: inventory-service
+
+  datasource:
+    url: ${INVENTORY_DB_URL:jdbc:postgresql://localhost:5433/inventory_db}
+    username: ${INVENTORY_DB_USER:inventory}
+    password: ${INVENTORY_DB_PASSWORD:inventory}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  data:
+    redis:
+      host: ${INVENTORY_REDIS_HOST:localhost}
+      port: ${INVENTORY_REDIS_PORT:6379}
+
+server:
+  port: ${SERVER_PORT:8092}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+  endpoint:
+    prometheus:
+      access: unrestricted
+
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  otlp:
+    tracing:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://otel-collector:4318/v1/traces}
+
+opsmind:
+  fault:
+    admin-token: ${FAULT_ADMIN_TOKEN:}

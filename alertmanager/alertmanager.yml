@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 30s
+
+route:
+  receiver: opsmind-webhook
+  group_by: ['alertname', 'service']
+  group_wait: 5s
+  group_interval: 10s
+  repeat_interval: 1m
+
+receivers:
+  - name: opsmind-webhook
+    webhook_configs:
+      # Alertmanager's own webhook JSON shape (not OpsMind's /api/alerts shape) -
+      # OpsMind has a dedicated adapter endpoint (AlertmanagerWebhookController)
+      # that translates it into the generic AlertIngestRequest.
+      #
+      # SECURITY NOTE (documented simplification, not hidden): Alertmanager's yaml
+      # does not support environment-variable substitution, so this shared token
+      # cannot be injected from .env the way every other secret in this repo is.
+      # It is hardcoded here and must match OPSMIND_WEBHOOK_TOKEN in your .env
+      # exactly - see README "Phase 4". Proper secret management for this specific
+      # config file (e.g. templating it at container start, or a network-level
+      # control instead of a token) is Phase 17 (security hardening) work.
+      - url: "http://opsmind-core:8080/api/alerts/webhooks/alertmanager?token=dev-local-webhook-token-change-me"
+        send_resolved: true

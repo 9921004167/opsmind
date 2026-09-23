@@ -1,0 +1,486 @@
+opsmind-core-1  | >>> BUILD-MARKER-9F3K2A STARTING <<<
+opsmind-core-1  | 
+opsmind-core-1  |   .   ____          _            __ _ _
+opsmind-core-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+opsmind-core-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+opsmind-core-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+opsmind-core-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+opsmind-core-1  |  =========|_|==============|___/=/_/_/_/
+opsmind-core-1  | 
+opsmind-core-1  |  :: Spring Boot ::                (v3.3.4)
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:36.342Z  INFO 1 --- [opsmind-core] [           main] c.opsmind.core.OpsMindCoreApplication    : Starting OpsMindCoreApplication v0.1.0-phase1 using Java 21.0.12 with PID 1 (/app/app.jar started by opsmind in /app)
+opsmind-core-1  | 2026-09-18T04:23:36.347Z  INFO 1 --- [opsmind-core] [           main] c.opsmind.core.OpsMindCoreApplication    : The following 1 profile is active: "docker"
+opsmind-core-1  | 2026-09-18T04:23:38.542Z  INFO 1 --- [opsmind-core] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+opsmind-core-1  | 2026-09-18T04:23:38.684Z  INFO 1 --- [opsmind-core] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 13 JPA repository interfaces.
+opsmind-core-1  | 2026-09-18T04:23:40.423Z  INFO 1 --- [opsmind-core] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+opsmind-core-1  | 2026-09-18T04:23:40.449Z  INFO 1 --- [opsmind-core] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+opsmind-core-1  | 2026-09-18T04:23:40.450Z  INFO 1 --- [opsmind-core] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+opsmind-core-1  | 2026-09-18T04:23:40.509Z  INFO 1 --- [opsmind-core] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+opsmind-core-1  | 2026-09-18T04:23:40.511Z  INFO 1 --- [opsmind-core] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4068 ms
+opsmind-core-1  | 2026-09-18T04:23:41.396Z  INFO 1 --- [opsmind-core] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+opsmind-core-1  | 2026-09-18T04:23:41.700Z  INFO 1 --- [opsmind-core] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@42d0e41
+opsmind-core-1  | 2026-09-18T04:23:41.703Z  INFO 1 --- [opsmind-core] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+opsmind-core-1  | 2026-09-18T04:23:41.755Z  INFO 1 --- [opsmind-core] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://postgres:5432/opsmind (PostgreSQL 16.15)
+opsmind-core-1  | 2026-09-18T04:23:41.852Z  INFO 1 --- [opsmind-core] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.063s)
+opsmind-core-1  | 2026-09-18T04:23:41.890Z  INFO 1 --- [opsmind-core] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 7
+opsmind-core-1  | 2026-09-18T04:23:41.896Z  INFO 1 --- [opsmind-core] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+opsmind-core-1  | 2026-09-18T04:23:42.128Z  INFO 1 --- [opsmind-core] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+opsmind-core-1  | 2026-09-18T04:23:42.236Z  INFO 1 --- [opsmind-core] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+opsmind-core-1  | 2026-09-18T04:23:42.299Z  INFO 1 --- [opsmind-core] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+opsmind-core-1  | 2026-09-18T04:23:42.740Z  INFO 1 --- [opsmind-core] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+opsmind-core-1  | 2026-09-18T04:23:44.636Z  INFO 1 --- [opsmind-core] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+opsmind-core-1  | 2026-09-18T04:23:44.705Z  INFO 1 --- [opsmind-core] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+opsmind-core-1  | 2026-09-18T04:23:46.801Z  WARN 1 --- [opsmind-core] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+opsmind-core-1  | 
+opsmind-core-1  | Using generated security password: 16909045-4b7e-4908-acb2-2aad014f4d99
+opsmind-core-1  | 
+opsmind-core-1  | This generated password is for development use only. Your security configuration must be updated before running your application in production.
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:46.820Z  INFO 1 --- [opsmind-core] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+opsmind-core-1  | 2026-09-18T04:23:47.382Z  INFO 1 --- [opsmind-core] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+opsmind-core-1  | 2026-09-18T04:23:48.568Z  INFO 1 --- [opsmind-core] [           main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+opsmind-core-1  | 	auto.include.jmx.reporter = true
+opsmind-core-1  | 	bootstrap.controllers = []
+opsmind-core-1  | 	bootstrap.servers = [kafka:19092]
+opsmind-core-1  | 	client.dns.lookup = use_all_dns_ips
+opsmind-core-1  | 	client.id = opsmind-core-admin-0
+opsmind-core-1  | 	connections.max.idle.ms = 300000
+opsmind-core-1  | 	default.api.timeout.ms = 60000
+opsmind-core-1  | 	enable.metrics.push = true
+opsmind-core-1  | 	metadata.max.age.ms = 300000
+opsmind-core-1  | 	metric.reporters = []
+opsmind-core-1  | 	metrics.num.samples = 2
+opsmind-core-1  | 	metrics.recording.level = INFO
+opsmind-core-1  | 	metrics.sample.window.ms = 30000
+opsmind-core-1  | 	receive.buffer.bytes = 65536
+opsmind-core-1  | 	reconnect.backoff.max.ms = 1000
+opsmind-core-1  | 	reconnect.backoff.ms = 50
+opsmind-core-1  | 	request.timeout.ms = 30000
+opsmind-core-1  | 	retries = 2147483647
+opsmind-core-1  | 	retry.backoff.max.ms = 1000
+opsmind-core-1  | 	retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.client.callback.handler.class = null
+opsmind-core-1  | 	sasl.jaas.config = null
+opsmind-core-1  | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+opsmind-core-1  | 	sasl.kerberos.min.time.before.relogin = 60000
+opsmind-core-1  | 	sasl.kerberos.service.name = null
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.jitter = 0.05
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.callback.handler.class = null
+opsmind-core-1  | 	sasl.login.class = null
+opsmind-core-1  | 	sasl.login.connect.timeout.ms = null
+opsmind-core-1  | 	sasl.login.read.timeout.ms = null
+opsmind-core-1  | 	sasl.login.refresh.buffer.seconds = 300
+opsmind-core-1  | 	sasl.login.refresh.min.period.seconds = 60
+opsmind-core-1  | 	sasl.login.refresh.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.refresh.window.jitter = 0.05
+opsmind-core-1  | 	sasl.login.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.login.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.mechanism = GSSAPI
+opsmind-core-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+opsmind-core-1  | 	sasl.oauthbearer.expected.audience = null
+opsmind-core-1  | 	sasl.oauthbearer.expected.issuer = null
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+opsmind-core-1  | 	sasl.oauthbearer.scope.claim.name = scope
+opsmind-core-1  | 	sasl.oauthbearer.sub.claim.name = sub
+opsmind-core-1  | 	sasl.oauthbearer.token.endpoint.url = null
+opsmind-core-1  | 	security.protocol = PLAINTEXT
+opsmind-core-1  | 	security.providers = null
+opsmind-core-1  | 	send.buffer.bytes = 131072
+opsmind-core-1  | 	socket.connection.setup.timeout.max.ms = 30000
+opsmind-core-1  | 	socket.connection.setup.timeout.ms = 10000
+opsmind-core-1  | 	ssl.cipher.suites = null
+opsmind-core-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+opsmind-core-1  | 	ssl.endpoint.identification.algorithm = https
+opsmind-core-1  | 	ssl.engine.factory.class = null
+opsmind-core-1  | 	ssl.key.password = null
+opsmind-core-1  | 	ssl.keymanager.algorithm = SunX509
+opsmind-core-1  | 	ssl.keystore.certificate.chain = null
+opsmind-core-1  | 	ssl.keystore.key = null
+opsmind-core-1  | 	ssl.keystore.location = null
+opsmind-core-1  | 	ssl.keystore.password = null
+opsmind-core-1  | 	ssl.keystore.type = JKS
+opsmind-core-1  | 	ssl.protocol = TLSv1.3
+opsmind-core-1  | 	ssl.provider = null
+opsmind-core-1  | 	ssl.secure.random.implementation = null
+opsmind-core-1  | 	ssl.trustmanager.algorithm = PKIX
+opsmind-core-1  | 	ssl.truststore.certificates = null
+opsmind-core-1  | 	ssl.truststore.location = null
+opsmind-core-1  | 	ssl.truststore.password = null
+opsmind-core-1  | 	ssl.truststore.type = JKS
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:48.772Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.1
+opsmind-core-1  | 2026-09-18T04:23:48.773Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: e2494e6ffb89f828
+opsmind-core-1  | 2026-09-18T04:23:48.773Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1789705428770
+opsmind-core-1  | 2026-09-18T04:23:49.372Z  INFO 1 --- [opsmind-core] [nd-core-admin-0] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for opsmind-core-admin-0 unregistered
+opsmind-core-1  | 2026-09-18T04:23:49.382Z  INFO 1 --- [opsmind-core] [nd-core-admin-0] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+opsmind-core-1  | 2026-09-18T04:23:49.382Z  INFO 1 --- [opsmind-core] [nd-core-admin-0] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+opsmind-core-1  | 2026-09-18T04:23:49.382Z  INFO 1 --- [opsmind-core] [nd-core-admin-0] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+opsmind-core-1  | 2026-09-18T04:23:49.412Z  INFO 1 --- [opsmind-core] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+opsmind-core-1  | 2026-09-18T04:23:49.468Z  INFO 1 --- [opsmind-core] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+opsmind-core-1  | 	allow.auto.create.topics = true
+opsmind-core-1  | 	auto.commit.interval.ms = 5000
+opsmind-core-1  | 	auto.include.jmx.reporter = true
+opsmind-core-1  | 	auto.offset.reset = earliest
+opsmind-core-1  | 	bootstrap.servers = [kafka:19092]
+opsmind-core-1  | 	check.crcs = true
+opsmind-core-1  | 	client.dns.lookup = use_all_dns_ips
+opsmind-core-1  | 	client.id = consumer-opsmind-core-audit-1
+opsmind-core-1  | 	client.rack = 
+opsmind-core-1  | 	connections.max.idle.ms = 540000
+opsmind-core-1  | 	default.api.timeout.ms = 60000
+opsmind-core-1  | 	enable.auto.commit = false
+opsmind-core-1  | 	enable.metrics.push = true
+opsmind-core-1  | 	exclude.internal.topics = true
+opsmind-core-1  | 	fetch.max.bytes = 52428800
+opsmind-core-1  | 	fetch.max.wait.ms = 500
+opsmind-core-1  | 	fetch.min.bytes = 1
+opsmind-core-1  | 	group.id = opsmind-core-audit
+opsmind-core-1  | 	group.instance.id = null
+opsmind-core-1  | 	group.protocol = classic
+opsmind-core-1  | 	group.remote.assignor = null
+opsmind-core-1  | 	heartbeat.interval.ms = 3000
+opsmind-core-1  | 	interceptor.classes = []
+opsmind-core-1  | 	internal.leave.group.on.close = true
+opsmind-core-1  | 	internal.throw.on.fetch.stable.offset.unsupported = false
+opsmind-core-1  | 	isolation.level = read_uncommitted
+opsmind-core-1  | 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 	max.partition.fetch.bytes = 1048576
+opsmind-core-1  | 	max.poll.interval.ms = 300000
+opsmind-core-1  | 	max.poll.records = 500
+opsmind-core-1  | 	metadata.max.age.ms = 300000
+opsmind-core-1  | 	metric.reporters = []
+opsmind-core-1  | 	metrics.num.samples = 2
+opsmind-core-1  | 	metrics.recording.level = INFO
+opsmind-core-1  | 	metrics.sample.window.ms = 30000
+opsmind-core-1  | 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+opsmind-core-1  | 	receive.buffer.bytes = 65536
+opsmind-core-1  | 	reconnect.backoff.max.ms = 1000
+opsmind-core-1  | 	reconnect.backoff.ms = 50
+opsmind-core-1  | 	request.timeout.ms = 30000
+opsmind-core-1  | 	retry.backoff.max.ms = 1000
+opsmind-core-1  | 	retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.client.callback.handler.class = null
+opsmind-core-1  | 	sasl.jaas.config = null
+opsmind-core-1  | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+opsmind-core-1  | 	sasl.kerberos.min.time.before.relogin = 60000
+opsmind-core-1  | 	sasl.kerberos.service.name = null
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.jitter = 0.05
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.callback.handler.class = null
+opsmind-core-1  | 	sasl.login.class = null
+opsmind-core-1  | 	sasl.login.connect.timeout.ms = null
+opsmind-core-1  | 	sasl.login.read.timeout.ms = null
+opsmind-core-1  | 	sasl.login.refresh.buffer.seconds = 300
+opsmind-core-1  | 	sasl.login.refresh.min.period.seconds = 60
+opsmind-core-1  | 	sasl.login.refresh.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.refresh.window.jitter = 0.05
+opsmind-core-1  | 	sasl.login.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.login.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.mechanism = GSSAPI
+opsmind-core-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+opsmind-core-1  | 	sasl.oauthbearer.expected.audience = null
+opsmind-core-1  | 	sasl.oauthbearer.expected.issuer = null
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+opsmind-core-1  | 	sasl.oauthbearer.scope.claim.name = scope
+opsmind-core-1  | 	sasl.oauthbearer.sub.claim.name = sub
+opsmind-core-1  | 	sasl.oauthbearer.token.endpoint.url = null
+opsmind-core-1  | 	security.protocol = PLAINTEXT
+opsmind-core-1  | 	security.providers = null
+opsmind-core-1  | 	send.buffer.bytes = 131072
+opsmind-core-1  | 	session.timeout.ms = 45000
+opsmind-core-1  | 	socket.connection.setup.timeout.max.ms = 30000
+opsmind-core-1  | 	socket.connection.setup.timeout.ms = 10000
+opsmind-core-1  | 	ssl.cipher.suites = null
+opsmind-core-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+opsmind-core-1  | 	ssl.endpoint.identification.algorithm = https
+opsmind-core-1  | 	ssl.engine.factory.class = null
+opsmind-core-1  | 	ssl.key.password = null
+opsmind-core-1  | 	ssl.keymanager.algorithm = SunX509
+opsmind-core-1  | 	ssl.keystore.certificate.chain = null
+opsmind-core-1  | 	ssl.keystore.key = null
+opsmind-core-1  | 	ssl.keystore.location = null
+opsmind-core-1  | 	ssl.keystore.password = null
+opsmind-core-1  | 	ssl.keystore.type = JKS
+opsmind-core-1  | 	ssl.protocol = TLSv1.3
+opsmind-core-1  | 	ssl.provider = null
+opsmind-core-1  | 	ssl.secure.random.implementation = null
+opsmind-core-1  | 	ssl.trustmanager.algorithm = PKIX
+opsmind-core-1  | 	ssl.truststore.certificates = null
+opsmind-core-1  | 	ssl.truststore.location = null
+opsmind-core-1  | 	ssl.truststore.password = null
+opsmind-core-1  | 	ssl.truststore.type = JKS
+opsmind-core-1  | 	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:49.561Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+opsmind-core-1  | 2026-09-18T04:23:49.659Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.1
+opsmind-core-1  | 2026-09-18T04:23:49.660Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: e2494e6ffb89f828
+opsmind-core-1  | 2026-09-18T04:23:49.660Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1789705429659
+opsmind-core-1  | 2026-09-18T04:23:49.678Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Subscribed to topic(s): incident.status.changed
+opsmind-core-1  | 2026-09-18T04:23:49.695Z  INFO 1 --- [opsmind-core] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+opsmind-core-1  | 	allow.auto.create.topics = true
+opsmind-core-1  | 	auto.commit.interval.ms = 5000
+opsmind-core-1  | 	auto.include.jmx.reporter = true
+opsmind-core-1  | 	auto.offset.reset = earliest
+opsmind-core-1  | 	bootstrap.servers = [kafka:19092]
+opsmind-core-1  | 	check.crcs = true
+opsmind-core-1  | 	client.dns.lookup = use_all_dns_ips
+opsmind-core-1  | 	client.id = consumer-opsmind-core-audit-2
+opsmind-core-1  | 	client.rack = 
+opsmind-core-1  | 	connections.max.idle.ms = 540000
+opsmind-core-1  | 	default.api.timeout.ms = 60000
+opsmind-core-1  | 	enable.auto.commit = false
+opsmind-core-1  | 	enable.metrics.push = true
+opsmind-core-1  | 	exclude.internal.topics = true
+opsmind-core-1  | 	fetch.max.bytes = 52428800
+opsmind-core-1  | 	fetch.max.wait.ms = 500
+opsmind-core-1  | 	fetch.min.bytes = 1
+opsmind-core-1  | 	group.id = opsmind-core-audit
+opsmind-core-1  | 	group.instance.id = null
+opsmind-core-1  | 	group.protocol = classic
+opsmind-core-1  | 	group.remote.assignor = null
+opsmind-core-1  | 	heartbeat.interval.ms = 3000
+opsmind-core-1  | 	interceptor.classes = []
+opsmind-core-1  | 	internal.leave.group.on.close = true
+opsmind-core-1  | 	internal.throw.on.fetch.stable.offset.unsupported = false
+opsmind-core-1  | 	isolation.level = read_uncommitted
+opsmind-core-1  | 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 	max.partition.fetch.bytes = 1048576
+opsmind-core-1  | 	max.poll.interval.ms = 300000
+opsmind-core-1  | 	max.poll.records = 500
+opsmind-core-1  | 	metadata.max.age.ms = 300000
+opsmind-core-1  | 	metric.reporters = []
+opsmind-core-1  | 	metrics.num.samples = 2
+opsmind-core-1  | 	metrics.recording.level = INFO
+opsmind-core-1  | 	metrics.sample.window.ms = 30000
+opsmind-core-1  | 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+opsmind-core-1  | 	receive.buffer.bytes = 65536
+opsmind-core-1  | 	reconnect.backoff.max.ms = 1000
+opsmind-core-1  | 	reconnect.backoff.ms = 50
+opsmind-core-1  | 	request.timeout.ms = 30000
+opsmind-core-1  | 	retry.backoff.max.ms = 1000
+opsmind-core-1  | 	retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.client.callback.handler.class = null
+opsmind-core-1  | 	sasl.jaas.config = null
+opsmind-core-1  | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+opsmind-core-1  | 	sasl.kerberos.min.time.before.relogin = 60000
+opsmind-core-1  | 	sasl.kerberos.service.name = null
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.jitter = 0.05
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.callback.handler.class = null
+opsmind-core-1  | 	sasl.login.class = null
+opsmind-core-1  | 	sasl.login.connect.timeout.ms = null
+opsmind-core-1  | 	sasl.login.read.timeout.ms = null
+opsmind-core-1  | 	sasl.login.refresh.buffer.seconds = 300
+opsmind-core-1  | 	sasl.login.refresh.min.period.seconds = 60
+opsmind-core-1  | 	sasl.login.refresh.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.refresh.window.jitter = 0.05
+opsmind-core-1  | 	sasl.login.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.login.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.mechanism = GSSAPI
+opsmind-core-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+opsmind-core-1  | 	sasl.oauthbearer.expected.audience = null
+opsmind-core-1  | 	sasl.oauthbearer.expected.issuer = null
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+opsmind-core-1  | 	sasl.oauthbearer.scope.claim.name = scope
+opsmind-core-1  | 	sasl.oauthbearer.sub.claim.name = sub
+opsmind-core-1  | 	sasl.oauthbearer.token.endpoint.url = null
+opsmind-core-1  | 	security.protocol = PLAINTEXT
+opsmind-core-1  | 	security.providers = null
+opsmind-core-1  | 	send.buffer.bytes = 131072
+opsmind-core-1  | 	session.timeout.ms = 45000
+opsmind-core-1  | 	socket.connection.setup.timeout.max.ms = 30000
+opsmind-core-1  | 	socket.connection.setup.timeout.ms = 10000
+opsmind-core-1  | 	ssl.cipher.suites = null
+opsmind-core-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+opsmind-core-1  | 	ssl.endpoint.identification.algorithm = https
+opsmind-core-1  | 	ssl.engine.factory.class = null
+opsmind-core-1  | 	ssl.key.password = null
+opsmind-core-1  | 	ssl.keymanager.algorithm = SunX509
+opsmind-core-1  | 	ssl.keystore.certificate.chain = null
+opsmind-core-1  | 	ssl.keystore.key = null
+opsmind-core-1  | 	ssl.keystore.location = null
+opsmind-core-1  | 	ssl.keystore.password = null
+opsmind-core-1  | 	ssl.keystore.type = JKS
+opsmind-core-1  | 	ssl.protocol = TLSv1.3
+opsmind-core-1  | 	ssl.provider = null
+opsmind-core-1  | 	ssl.secure.random.implementation = null
+opsmind-core-1  | 	ssl.trustmanager.algorithm = PKIX
+opsmind-core-1  | 	ssl.truststore.certificates = null
+opsmind-core-1  | 	ssl.truststore.location = null
+opsmind-core-1  | 	ssl.truststore.password = null
+opsmind-core-1  | 	ssl.truststore.type = JKS
+opsmind-core-1  | 	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:49.695Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+opsmind-core-1  | 2026-09-18T04:23:49.705Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.1
+opsmind-core-1  | 2026-09-18T04:23:49.706Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: e2494e6ffb89f828
+opsmind-core-1  | 2026-09-18T04:23:49.707Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1789705429705
+opsmind-core-1  | 2026-09-18T04:23:49.722Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Subscribed to topic(s): alert.received
+opsmind-core-1  | 2026-09-18T04:23:49.723Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Cluster ID: opsmind-local-kraft-cluster-1
+opsmind-core-1  | 2026-09-18T04:23:49.725Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Discovered group coordinator kafka:19092 (id: 2147483646 rack: null)
+opsmind-core-1  | 2026-09-18T04:23:49.726Z  INFO 1 --- [opsmind-core] [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+opsmind-core-1  | 	allow.auto.create.topics = true
+opsmind-core-1  | 	auto.commit.interval.ms = 5000
+opsmind-core-1  | 	auto.include.jmx.reporter = true
+opsmind-core-1  | 	auto.offset.reset = earliest
+opsmind-core-1  | 	bootstrap.servers = [kafka:19092]
+opsmind-core-1  | 	check.crcs = true
+opsmind-core-1  | 	client.dns.lookup = use_all_dns_ips
+opsmind-core-1  | 	client.id = consumer-opsmind-core-audit-3
+opsmind-core-1  | 	client.rack = 
+opsmind-core-1  | 	connections.max.idle.ms = 540000
+opsmind-core-1  | 	default.api.timeout.ms = 60000
+opsmind-core-1  | 	enable.auto.commit = false
+opsmind-core-1  | 	enable.metrics.push = true
+opsmind-core-1  | 	exclude.internal.topics = true
+opsmind-core-1  | 	fetch.max.bytes = 52428800
+opsmind-core-1  | 	fetch.max.wait.ms = 500
+opsmind-core-1  | 	fetch.min.bytes = 1
+opsmind-core-1  | 	group.id = opsmind-core-audit
+opsmind-core-1  | 	group.instance.id = null
+opsmind-core-1  | 	group.protocol = classic
+opsmind-core-1  | 	group.remote.assignor = null
+opsmind-core-1  | 	heartbeat.interval.ms = 3000
+opsmind-core-1  | 	interceptor.classes = []
+opsmind-core-1  | 	internal.leave.group.on.close = true
+opsmind-core-1  | 	internal.throw.on.fetch.stable.offset.unsupported = false
+opsmind-core-1  | 	isolation.level = read_uncommitted
+opsmind-core-1  | 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 	max.partition.fetch.bytes = 1048576
+opsmind-core-1  | 	max.poll.interval.ms = 300000
+opsmind-core-1  | 	max.poll.records = 500
+opsmind-core-1  | 	metadata.max.age.ms = 300000
+opsmind-core-1  | 	metric.reporters = []
+opsmind-core-1  | 	metrics.num.samples = 2
+opsmind-core-1  | 	metrics.recording.level = INFO
+opsmind-core-1  | 	metrics.sample.window.ms = 30000
+opsmind-core-1  | 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+opsmind-core-1  | 	receive.buffer.bytes = 65536
+opsmind-core-1  | 	reconnect.backoff.max.ms = 1000
+opsmind-core-1  | 	reconnect.backoff.ms = 50
+opsmind-core-1  | 	request.timeout.ms = 30000
+opsmind-core-1  | 	retry.backoff.max.ms = 1000
+opsmind-core-1  | 	retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.client.callback.handler.class = null
+opsmind-core-1  | 	sasl.jaas.config = null
+opsmind-core-1  | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+opsmind-core-1  | 	sasl.kerberos.min.time.before.relogin = 60000
+opsmind-core-1  | 	sasl.kerberos.service.name = null
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.jitter = 0.05
+opsmind-core-1  | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.callback.handler.class = null
+opsmind-core-1  | 	sasl.login.class = null
+opsmind-core-1  | 	sasl.login.connect.timeout.ms = null
+opsmind-core-1  | 	sasl.login.read.timeout.ms = null
+opsmind-core-1  | 	sasl.login.refresh.buffer.seconds = 300
+opsmind-core-1  | 	sasl.login.refresh.min.period.seconds = 60
+opsmind-core-1  | 	sasl.login.refresh.window.factor = 0.8
+opsmind-core-1  | 	sasl.login.refresh.window.jitter = 0.05
+opsmind-core-1  | 	sasl.login.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.login.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.mechanism = GSSAPI
+opsmind-core-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+opsmind-core-1  | 	sasl.oauthbearer.expected.audience = null
+opsmind-core-1  | 	sasl.oauthbearer.expected.issuer = null
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+opsmind-core-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+opsmind-core-1  | 	sasl.oauthbearer.scope.claim.name = scope
+opsmind-core-1  | 	sasl.oauthbearer.sub.claim.name = sub
+opsmind-core-1  | 	sasl.oauthbearer.token.endpoint.url = null
+opsmind-core-1  | 	security.protocol = PLAINTEXT
+opsmind-core-1  | 	security.providers = null
+opsmind-core-1  | 	send.buffer.bytes = 131072
+opsmind-core-1  | 	session.timeout.ms = 45000
+opsmind-core-1  | 	socket.connection.setup.timeout.max.ms = 30000
+opsmind-core-1  | 	socket.connection.setup.timeout.ms = 10000
+opsmind-core-1  | 	ssl.cipher.suites = null
+opsmind-core-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+opsmind-core-1  | 	ssl.endpoint.identification.algorithm = https
+opsmind-core-1  | 	ssl.engine.factory.class = null
+opsmind-core-1  | 	ssl.key.password = null
+opsmind-core-1  | 	ssl.keymanager.algorithm = SunX509
+opsmind-core-1  | 	ssl.keystore.certificate.chain = null
+opsmind-core-1  | 	ssl.keystore.key = null
+opsmind-core-1  | 	ssl.keystore.location = null
+opsmind-core-1  | 	ssl.keystore.password = null
+opsmind-core-1  | 	ssl.keystore.type = JKS
+opsmind-core-1  | 	ssl.protocol = TLSv1.3
+opsmind-core-1  | 	ssl.provider = null
+opsmind-core-1  | 	ssl.secure.random.implementation = null
+opsmind-core-1  | 	ssl.trustmanager.algorithm = PKIX
+opsmind-core-1  | 	ssl.truststore.certificates = null
+opsmind-core-1  | 	ssl.truststore.location = null
+opsmind-core-1  | 	ssl.truststore.password = null
+opsmind-core-1  | 	ssl.truststore.type = JKS
+opsmind-core-1  | 	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+opsmind-core-1  | 
+opsmind-core-1  | 2026-09-18T04:23:49.727Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+opsmind-core-1  | 2026-09-18T04:23:49.730Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.733Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Cluster ID: opsmind-local-kraft-cluster-1
+opsmind-core-1  | 2026-09-18T04:23:49.734Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Discovered group coordinator kafka:19092 (id: 2147483646 rack: null)
+opsmind-core-1  | 2026-09-18T04:23:49.736Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.739Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.7.1
+opsmind-core-1  | 2026-09-18T04:23:49.740Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: e2494e6ffb89f828
+opsmind-core-1  | 2026-09-18T04:23:49.740Z  INFO 1 --- [opsmind-core] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1789705429739
+opsmind-core-1  | 2026-09-18T04:23:49.749Z  INFO 1 --- [opsmind-core] [           main] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Subscribed to topic(s): incident.created
+opsmind-core-1  | 2026-09-18T04:23:49.761Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Cluster ID: opsmind-local-kraft-cluster-1
+opsmind-core-1  | 2026-09-18T04:23:49.763Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Discovered group coordinator kafka:19092 (id: 2147483646 rack: null)
+opsmind-core-1  | 2026-09-18T04:23:49.764Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.767Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Request joining group due to: need to re-join with the given member-id: consumer-opsmind-core-audit-2-974ce5a0-e576-420a-8a69-6a196f7c045b
+opsmind-core-1  | 2026-09-18T04:23:49.767Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Request joining group due to: need to re-join with the given member-id: consumer-opsmind-core-audit-1-bfa796bc-8fe2-4372-8a09-2a0ce0a26521
+opsmind-core-1  | 2026-09-18T04:23:49.768Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.768Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.770Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Request joining group due to: need to re-join with the given member-id: consumer-opsmind-core-audit-3-ce109a85-492c-4dae-9f60-f62a1676bbc0
+opsmind-core-1  | 2026-09-18T04:23:49.770Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] (Re-)joining group
+opsmind-core-1  | 2026-09-18T04:23:49.787Z  INFO 1 --- [opsmind-core] [           main] c.opsmind.core.OpsMindCoreApplication    : Started OpsMindCoreApplication in 14.306 seconds (process running for 15.224)
+opsmind-core-1  | >>> incidentMemoryEnqueuer bean present: true
+opsmind-core-1  | >>> Beans found containing 'incidentMemory': [incidentMemorySourceAdapter, incidentMemoryRetrievalService, incidentMemoryRepository, incidentMemoryEnqueuer, incidentMemoryWorker, incidentMemoryDocumentBuilder, incident-memory-com.acme.incident.memory.config.IncidentMemoryProperties]
+opsmind-core-1  | 2026-09-18T04:23:52.774Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Successfully joined group with generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-3-ce109a85-492c-4dae-9f60-f62a1676bbc0', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.774Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Successfully joined group with generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-2-974ce5a0-e576-420a-8a69-6a196f7c045b', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.775Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Successfully joined group with generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-1-bfa796bc-8fe2-4372-8a09-2a0ce0a26521', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.795Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Finished assignment for group at generation 40: {consumer-opsmind-core-audit-1-bfa796bc-8fe2-4372-8a09-2a0ce0a26521=Assignment(partitions=[incident.status.changed-0, incident.status.changed-1, incident.status.changed-2]), consumer-opsmind-core-audit-2-974ce5a0-e576-420a-8a69-6a196f7c045b=Assignment(partitions=[alert.received-0, alert.received-1, alert.received-2]), consumer-opsmind-core-audit-3-ce109a85-492c-4dae-9f60-f62a1676bbc0=Assignment(partitions=[incident.created-0, incident.created-1, incident.created-2])}
+opsmind-core-1  | 2026-09-18T04:23:52.803Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Successfully synced group in generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-2-974ce5a0-e576-420a-8a69-6a196f7c045b', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.803Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Successfully synced group in generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-3-ce109a85-492c-4dae-9f60-f62a1676bbc0', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.803Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Successfully synced group in generation Generation{generationId=40, memberId='consumer-opsmind-core-audit-1-bfa796bc-8fe2-4372-8a09-2a0ce0a26521', protocol='range'}
+opsmind-core-1  | 2026-09-18T04:23:52.804Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Notifying assignor about the new Assignment(partitions=[alert.received-0, alert.received-1, alert.received-2])
+opsmind-core-1  | 2026-09-18T04:23:52.804Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Notifying assignor about the new Assignment(partitions=[incident.created-0, incident.created-1, incident.created-2])
+opsmind-core-1  | 2026-09-18T04:23:52.804Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Notifying assignor about the new Assignment(partitions=[incident.status.changed-0, incident.status.changed-1, incident.status.changed-2])
+opsmind-core-1  | 2026-09-18T04:23:52.808Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Adding newly assigned partitions: incident.status.changed-0, incident.status.changed-1, incident.status.changed-2
+opsmind-core-1  | 2026-09-18T04:23:52.808Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Adding newly assigned partitions: alert.received-0, alert.received-1, alert.received-2
+opsmind-core-1  | 2026-09-18T04:23:52.808Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Adding newly assigned partitions: incident.created-0, incident.created-1, incident.created-2
+opsmind-core-1  | 2026-09-18T04:23:52.819Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Found no committed offset for partition incident.status.changed-0
+opsmind-core-1  | 2026-09-18T04:23:52.819Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Found no committed offset for partition incident.status.changed-2
+opsmind-core-1  | 2026-09-18T04:23:52.821Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition incident.status.changed-1 to the committed offset FetchPosition{offset=5, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.821Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition incident.created-2 to the committed offset FetchPosition{offset=5, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.821Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition alert.received-0 to the committed offset FetchPosition{offset=7, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.822Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition incident.created-1 to the committed offset FetchPosition{offset=10, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.822Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition alert.received-1 to the committed offset FetchPosition{offset=7, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.822Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition incident.created-0 to the committed offset FetchPosition{offset=10, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.822Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition alert.received-2 to the committed offset FetchPosition{offset=11, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}
+opsmind-core-1  | 2026-09-18T04:23:52.824Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opsmind-core-audit: partitions assigned: [incident.created-0, incident.created-1, incident.created-2]
+opsmind-core-1  | 2026-09-18T04:23:52.824Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opsmind-core-audit: partitions assigned: [alert.received-0, alert.received-1, alert.received-2]
+opsmind-core-1  | 2026-09-18T04:23:52.834Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Resetting offset for partition incident.status.changed-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}.
+opsmind-core-1  | 2026-09-18T04:23:52.834Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Resetting offset for partition incident.status.changed-2 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[kafka:19092 (id: 1 rack: null)], epoch=0}}.
+opsmind-core-1  | 2026-09-18T04:23:52.835Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : opsmind-core-audit: partitions assigned: [incident.status.changed-0, incident.status.changed-1, incident.status.changed-2]
+opsmind-core-1  | 2026-09-18T04:25:50.633Z  INFO 1 --- [opsmind-core] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+opsmind-core-1  | 2026-09-18T04:25:50.634Z  INFO 1 --- [opsmind-core] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+opsmind-core-1  | 2026-09-18T04:25:50.638Z  INFO 1 --- [opsmind-core] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+opsmind-core-1  | 2026-09-18T04:32:49.823Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Node -1 disconnected.
+opsmind-core-1  | 2026-09-18T04:32:49.833Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Node -1 disconnected.
+opsmind-core-1  | 2026-09-18T04:32:49.868Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Node -1 disconnected.
+opsmind-core-1  | 2026-09-18T04:42:49.924Z  INFO 1 --- [opsmind-core] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-2, groupId=opsmind-core-audit] Node -1 disconnected.
+opsmind-core-1  | 2026-09-18T04:42:49.924Z  INFO 1 --- [opsmind-core] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-1, groupId=opsmind-core-audit] Node -1 disconnected.
+opsmind-core-1  | 2026-09-18T04:42:49.971Z  INFO 1 --- [opsmind-core] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-opsmind-core-audit-3, groupId=opsmind-core-audit] Node -1 disconnected.

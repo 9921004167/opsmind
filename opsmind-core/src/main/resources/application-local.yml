@@ -1,0 +1,10 @@
+# Profile for running opsmind-core directly on the host (e.g. from an IDE) against
+# the Postgres/Kafka/Redis containers started by docker-compose.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+logging:
+  level:
+    com.opsmind.core: DEBUG

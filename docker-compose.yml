@@ -1,0 +1,280 @@
+name: opsmind
+
+services:
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-opsmind}
+      POSTGRES_USER: ${POSTGRES_USER:-opsmind}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-opsmind}
+    ports:
+      - "5432:5432"
+    volumes:
+      - opsmind_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-opsmind} -d ${POSTGRES_DB:-opsmind}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Single-node Kafka in KRaft mode
+  kafka:
+    image: apache/kafka:3.7.1
+    restart: unless-stopped
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092,CONTROLLER://0.0.0.0:19093,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:19092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:19093
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      CLUSTER_ID: "opsmind-local-kraft-cluster-1"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Kafka UI
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: opsmind-local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:19092
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  opsmind-core:
+    build:
+      context: ./opsmind-core
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DB: ${POSTGRES_DB:-opsmind}
+      POSTGRES_USER: ${POSTGRES_USER:-opsmind}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-opsmind}
+      OPSMIND_JWT_SECRET: ${OPSMIND_JWT_SECRET:?OPSMIND_JWT_SECRET must be set in .env - see .env.example}
+      OPSMIND_JWT_EXPIRATION_MINUTES: ${OPSMIND_JWT_EXPIRATION_MINUTES:-60}
+      OPSMIND_WEBHOOK_TOKEN: ${OPSMIND_WEBHOOK_TOKEN:-dev-local-webhook-token-change-me}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      PROMETHEUS_BASE_URL: ${PROMETHEUS_BASE_URL:-http://prometheus:9090}
+      TEMPO_BASE_URL: ${TEMPO_BASE_URL:-http://tempo:3200}
+      # Phase 8: lets opsmind-core call the same /faults/*/disable endpoints
+      # the ecommerce services already protect with this token.
+      FAULT_ADMIN_TOKEN: ${FAULT_ADMIN_TOKEN:?FAULT_ADMIN_TOKEN must be set in .env - protects the failure-injection endpoints}
+      OPSMIND_AUTO_APPROVE_LOW_RISK: ${OPSMIND_AUTO_APPROVE_LOW_RISK:-false}
+    ports:
+      - "${OPSMIND_SERVER_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ============================================================
+  # E-commerce reference application
+  # ============================================================
+
+  ecommerce-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ecommerce_admin
+      POSTGRES_PASSWORD: ${ECOMMERCE_DB_ADMIN_PASSWORD:-ecommerce_admin}
+      POSTGRES_DB: postgres
+      CATALOG_DB_PASSWORD: ${CATALOG_DB_PASSWORD:-catalog}
+      ORDER_DB_PASSWORD: ${ORDER_DB_PASSWORD:-order_svc}
+      PAYMENT_DB_PASSWORD: ${PAYMENT_DB_PASSWORD:-payment}
+      INVENTORY_DB_PASSWORD: ${INVENTORY_DB_PASSWORD:-inventory}
+    ports:
+      - "5433:5432"
+    volumes:
+      - opsmind_ecommerce_postgres_data:/var/lib/postgresql/data
+      - ./ecommerce/db-init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ecommerce_admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  product-catalog-service:
+    build:
+      context: ./ecommerce/product-catalog-service
+    restart: unless-stopped
+    environment:
+      CATALOG_DB_URL: jdbc:postgresql://ecommerce-db:5432/catalog_db
+      CATALOG_DB_USER: catalog
+      CATALOG_DB_PASSWORD: ${CATALOG_DB_PASSWORD:-catalog}
+      SERVER_PORT: 8090
+    ports:
+      - "8090:8090"
+    depends_on:
+      ecommerce-db:
+        condition: service_healthy
+
+  payment-service:
+    build:
+      context: ./ecommerce/payment-service
+    restart: unless-stopped
+    environment:
+      PAYMENT_DB_URL: jdbc:postgresql://ecommerce-db:5432/payment_db
+      PAYMENT_DB_USER: payment
+      PAYMENT_DB_PASSWORD: ${PAYMENT_DB_PASSWORD:-payment}
+      SERVER_PORT: 8091
+      FAULT_ADMIN_TOKEN: ${FAULT_ADMIN_TOKEN:?FAULT_ADMIN_TOKEN must be set in .env - protects the failure-injection endpoints}
+    ports:
+      - "8091:8091"
+    depends_on:
+      ecommerce-db:
+        condition: service_healthy
+
+  inventory-service:
+    build:
+      context: ./ecommerce/inventory-service
+    restart: unless-stopped
+    environment:
+      INVENTORY_DB_URL: jdbc:postgresql://ecommerce-db:5432/inventory_db
+      INVENTORY_DB_USER: inventory
+      INVENTORY_DB_PASSWORD: ${INVENTORY_DB_PASSWORD:-inventory}
+      INVENTORY_REDIS_HOST: redis
+      INVENTORY_REDIS_PORT: 6379
+      SERVER_PORT: 8092
+      FAULT_ADMIN_TOKEN: ${FAULT_ADMIN_TOKEN:?FAULT_ADMIN_TOKEN must be set in .env - protects the failure-injection endpoints}
+    ports:
+      - "8092:8092"
+    depends_on:
+      ecommerce-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  order-service:
+    build:
+      context: ./ecommerce/order-service
+    restart: unless-stopped
+    environment:
+      ORDER_DB_URL: jdbc:postgresql://ecommerce-db:5432/order_db
+      ORDER_DB_USER: order_svc
+      ORDER_DB_PASSWORD: ${ORDER_DB_PASSWORD:-order_svc}
+      ORDER_KAFKA_BOOTSTRAP_SERVERS: kafka:19092
+      CATALOG_BASE_URL: http://product-catalog-service:8090
+      PAYMENT_BASE_URL: http://payment-service:8091
+      INVENTORY_BASE_URL: http://inventory-service:8092
+      SERVER_PORT: 8093
+      FAULT_ADMIN_TOKEN: ${FAULT_ADMIN_TOKEN:?FAULT_ADMIN_TOKEN must be set in .env - protects the failure-injection endpoints}
+    ports:
+      - "8093:8093"
+    depends_on:
+      ecommerce-db:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      product-catalog-service:
+        condition: service_started
+      payment-service:
+        condition: service_started
+      inventory-service:
+        condition: service_started
+
+  # ============================================================
+  # Monitoring
+  # ============================================================
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/alerts:/etc/prometheus/alerts:ro
+      - ./prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
+    depends_on:
+      product-catalog-service:
+        condition: service_started
+      payment-service:
+        condition: service_started
+      inventory-service:
+        condition: service_started
+      order-service:
+        condition: service_started
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    ports:
+      - "9093:9093"
+    depends_on:
+      - opsmind-core
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    restart: unless-stopped
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    volumes:
+      - ./monitoring/otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+    depends_on:
+      - prometheus
+
+  tempo:
+    image: grafana/tempo:latest
+    restart: unless-stopped
+    command: ["-config.file=/etc/tempo/tempo.yaml"]
+    ports:
+      - "3200:3200"
+      - "4319:4317"
+    volumes:
+      - ./monitoring/tempo.yaml:/etc/tempo/tempo.yaml:ro
+    depends_on:
+      - otel-collector
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - opsmind-core
+
+volumes:
+  opsmind_postgres_data:
+  opsmind_ecommerce_postgres_data:

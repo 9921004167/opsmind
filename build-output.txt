@@ -1,0 +1,260 @@
+ Image opsmind-opsmind-core Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 623B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 491B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/maven:3.9-eclipse-temurin-21
+#4 DONE 1.7s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 1.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:c2a2c58516d160f43b50f12baa427ca86989e0bc942609e04aff61da5d9a7d74
+#7 resolve docker.io/library/maven:3.9-eclipse-temurin-21@sha256:c2a2c58516d160f43b50f12baa427ca86989e0bc942609e04aff61da5d9a7d74 0.1s done
+#7 DONE 0.1s
+
+#8 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:1a29e1fe337eb28b5bec30f0ee8ed29f0ff80ab6f75dcf9313efe82911065a52
+#8 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:1a29e1fe337eb28b5bec30f0ee8ed29f0ff80ab6f75dcf9313efe82911065a52
+#8 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:1a29e1fe337eb28b5bec30f0ee8ed29f0ff80ab6f75dcf9313efe82911065a52 0.1s done
+#8 DONE 0.1s
+
+#7 [build 1/6] FROM docker.io/library/maven:3.9-eclipse-temurin-21@sha256:c2a2c58516d160f43b50f12baa427ca86989e0bc942609e04aff61da5d9a7d74
+#7 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 20.25kB 0.0s done
+#6 DONE 0.0s
+
+#9 [build 2/6] WORKDIR /build
+#9 CACHED
+
+#10 [build 3/6] COPY pom.xml .
+#10 CACHED
+
+#11 [build 4/6] RUN mvn -B dependency:go-offline
+#11 CACHED
+
+#12 [build 5/6] COPY src ./src
+#12 CACHED
+
+#13 [build 6/6] RUN mvn -B clean package -DskipTests
+#13 2.726 [INFO] Scanning for projects...
+#13 3.133 [INFO] 
+#13 3.134 [INFO] ----------------------< com.opsmind:opsmind-core >----------------------
+#13 3.134 [INFO] Building opsmind-core 0.1.0-phase1
+#13 3.134 [INFO]   from pom.xml
+#13 3.134 [INFO] --------------------------------[ jar ]---------------------------------
+#13 3.770 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom
+#13 5.016 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom (19 kB at 15 kB/s)
+#13 5.041 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom
+#13 5.083 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom (6.0 kB at 142 kB/s)
+#13 5.119 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom
+#13 5.192 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom (7.0 kB at 97 kB/s)
+#13 5.202 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom
+#13 5.265 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom (16 kB at 253 kB/s)
+#13 5.271 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom
+#13 5.323 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom (62 kB at 1.2 MB/s)
+#13 5.347 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.pom
+#13 5.391 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.pom (11 kB at 246 kB/s)
+#13 5.397 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.5/jaxb-runtime-parent-4.0.5.pom
+#13 5.446 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.5/jaxb-runtime-parent-4.0.5.pom (1.2 kB at 25 kB/s)
+#13 5.450 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.5/jaxb-parent-4.0.5.pom
+#13 5.519 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.5/jaxb-parent-4.0.5.pom (35 kB at 507 kB/s)
+#13 5.527 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.5/jaxb-bom-ext-4.0.5.pom
+#13 5.598 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.5/jaxb-bom-ext-4.0.5.pom (3.5 kB at 49 kB/s)
+#13 5.609 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.pom
+#13 5.673 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.pom (3.7 kB at 59 kB/s)
+#13 5.684 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.pom
+#13 5.728 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.pom (4.0 kB at 89 kB/s)
+#13 5.734 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation-project/2.0.2/angus-activation-project-2.0.2.pom
+#13 5.808 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation-project/2.0.2/angus-activation-project-2.0.2.pom (21 kB at 282 kB/s)
+#13 5.817 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.pom
+#13 5.864 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.pom (1.8 kB at 38 kB/s)
+#13 5.869 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.5/jaxb-txw-parent-4.0.5.pom
+#13 5.929 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.5/jaxb-txw-parent-4.0.5.pom (1.2 kB at 20 kB/s)
+#13 5.937 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom
+#13 6.025 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom (1.6 kB at 18 kB/s)
+#13 6.030 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom
+#13 6.094 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom (26 kB at 418 kB/s)
+#13 6.260 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.pom
+#13 6.389 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.pom (3.5 kB at 27 kB/s)
+#13 6.394 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-text/2.17.2/jackson-dataformats-text-2.17.2.pom
+#13 6.549 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformats-text/2.17.2/jackson-dataformats-text-2.17.2.pom (3.5 kB at 22 kB/s)
+#13 6.691 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.pom
+#13 6.741 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.pom (2.6 kB at 53 kB/s)
+#13 6.799 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom
+#13 6.852 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom (10 kB at 197 kB/s)
+#13 6.896 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.pom
+#13 6.936 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.pom (4.6 kB at 116 kB/s)
+#13 6.940 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.113.Final/netty-parent-4.1.113.Final.pom
+#13 6.983 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.113.Final/netty-parent-4.1.113.Final.pom (90 kB at 2.1 MB/s)
+#13 6.995 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.pom
+#13 7.036 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.pom (12 kB at 295 kB/s)
+#13 7.045 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.pom
+#13 7.080 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.pom (1.6 kB at 47 kB/s)
+#13 7.088 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.pom
+#13 7.146 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.pom (1.6 kB at 27 kB/s)
+#13 7.157 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.pom
+#13 7.207 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.pom (2.2 kB at 43 kB/s)
+#13 7.216 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.pom
+#13 7.260 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.pom (33 kB at 736 kB/s)
+#13 7.270 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.pom
+#13 7.305 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.pom (5.5 kB at 161 kB/s)
+#13 7.313 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.pom
+#13 7.352 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.pom (27 kB at 668 kB/s)
+#13 7.365 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.pom
+#13 7.411 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.pom (2.1 kB at 45 kB/s)
+#13 7.482 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.pom
+#13 7.527 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.pom (2.1 kB at 46 kB/s)
+#13 7.536 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.37.0/checker-qual-3.37.0.pom
+#13 7.660 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.37.0/checker-qual-3.37.0.pom (2.1 kB at 17 kB/s)
+#13 7.668 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.pom
+#13 7.714 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.pom (1.8 kB at 39 kB/s)
+#13 7.719 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.21.1/error_prone_parent-2.21.1.pom
+#13 7.763 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.21.1/error_prone_parent-2.21.1.pom (13 kB at 285 kB/s)
+#13 7.816 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.pom
+#13 7.858 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.pom (4.9 kB at 114 kB/s)
+#13 7.864 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/scala-lang/scala-library/2.13.13/scala-library-2.13.13.pom
+#13 7.905 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/scala-lang/scala-library/2.13.13/scala-library-2.13.13.pom (1.6 kB at 39 kB/s)
+#13 7.912 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.pom
+#13 7.984 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.pom (3.0 kB at 41 kB/s)
+#13 8.137 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar
+#13 8.183 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar (59 kB at 1.3 MB/s)
+#13 8.185 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar
+#13 8.186 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar
+#13 8.188 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar
+#13 8.189 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar
+#13 8.189 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar
+#13 8.249 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar (69 kB at 1.1 MB/s)
+#13 8.249 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar
+#13 8.299 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar (27 kB at 246 kB/s)
+#13 8.299 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar
+#13 8.310 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar (73 kB at 606 kB/s)
+#13 8.310 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar
+#13 8.364 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar (26 kB at 148 kB/s)
+#13 8.365 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.jar
+#13 8.393 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar (139 kB at 676 kB/s)
+#13 8.393 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.jar
+#13 8.398 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar (69 kB at 332 kB/s)
+#13 8.398 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar
+#13 8.414 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.jar (56 kB at 249 kB/s)
+#13 8.414 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar
+#13 8.471 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.jar (55 kB at 197 kB/s)
+#13 8.472 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar
+#13 8.527 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar (920 kB at 2.7 MB/s)
+#13 8.527 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar
+#13 8.557 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar (263 kB at 718 kB/s)
+#13 8.557 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar
+#13 8.583 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar (38 kB at 97 kB/s)
+#13 8.583 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar
+#13 8.627 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar (571 kB at 1.3 MB/s)
+#13 8.627 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar
+#13 8.736 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar (337 kB at 619 kB/s)
+#13 8.736 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar
+#13 8.739 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar (521 kB at 951 kB/s)
+#13 8.739 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.jar
+#13 8.740 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar (44 kB at 80 kB/s)
+#13 8.740 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar
+#13 8.744 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar (695 kB at 1.3 MB/s)
+#13 8.744 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.jar
+#13 8.845 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.jar (6.1 kB at 9.3 kB/s)
+#13 8.845 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar
+#13 8.878 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar (148 kB at 215 kB/s)
+#13 8.878 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.jar
+#13 8.901 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar (352 kB at 496 kB/s)
+#13 8.901 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.jar
+#13 8.915 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar (17 kB at 23 kB/s)
+#13 8.938 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar (4.2 MB at 5.6 MB/s)
+#13 8.966 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.jar (103 kB at 133 kB/s)
+#13 8.975 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.jar (889 kB at 1.1 MB/s)
+#13 9.062 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.jar (521 kB at 599 kB/s)
+#13 9.101 [INFO] 
+#13 9.101 [INFO] --- clean:3.3.2:clean (default-clean) @ opsmind-core ---
+#13 9.173 [INFO] 
+#13 9.173 [INFO] --- resources:3.3.1:resources (default-resources) @ opsmind-core ---
+#13 9.261 [INFO] Copying 3 resources from src/main/resources to target/classes
+#13 9.283 [INFO] Copying 6 resources from src/main/resources to target/classes
+#13 9.288 [INFO] 
+#13 9.288 [INFO] --- compiler:3.13.0:compile (default-compile) @ opsmind-core ---
+#13 9.437 [INFO] Recompiling the module because of changed source code.
+#13 9.447 [INFO] Compiling 173 source files with javac [debug parameters release 21] to target/classes
+#13 14.89 [INFO] 
+#13 14.89 [INFO] --- resources:3.3.1:testResources (default-testResources) @ opsmind-core ---
+#13 14.90 [INFO] skip non existing resourceDirectory /build/src/test/resources
+#13 14.90 [INFO] 
+#13 14.90 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ opsmind-core ---
+#13 14.91 [INFO] Recompiling the module because of changed dependency.
+#13 14.91 [INFO] Compiling 10 source files with javac [debug parameters release 21] to target/test-classes
+#13 16.02 [INFO] -------------------------------------------------------------
+#13 16.02 [ERROR] COMPILATION ERROR : 
+#13 16.02 [INFO] -------------------------------------------------------------
+#13 16.02 [ERROR] /build/src/test/java/com/opsmind/core/remediation/RemediationExecutionServiceTest.java:[75,16] constructor RemediationExecutionService in class com.opsmind.core.remediation.service.RemediationExecutionService cannot be applied to given types;
+#13 16.02   required: com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,com.fasterxml.jackson.databind.ObjectMapper,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+#13 16.02   found:    com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+#13 16.02   reason: actual and formal argument lists differ in length
+#13 16.02 [INFO] 1 error
+#13 16.02 [INFO] -------------------------------------------------------------
+#13 16.02 [INFO] ------------------------------------------------------------------------
+#13 16.02 [INFO] BUILD FAILURE
+#13 16.02 [INFO] ------------------------------------------------------------------------
+#13 16.03 [INFO] Total time:  13.334 s
+#13 16.03 [INFO] Finished at: 2026-09-20T11:39:25Z
+#13 16.03 [INFO] ------------------------------------------------------------------------
+#13 16.03 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile (default-testCompile) on project opsmind-core: Compilation failure
+#13 16.03 [ERROR] /build/src/test/java/com/opsmind/core/remediation/RemediationExecutionServiceTest.java:[75,16] constructor RemediationExecutionService in class com.opsmind.core.remediation.service.RemediationExecutionService cannot be applied to given types;
+#13 16.03 [ERROR]   required: com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,com.fasterxml.jackson.databind.ObjectMapper,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+#13 16.03 [ERROR]   found:    com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+#13 16.03 [ERROR]   reason: actual and formal argument lists differ in length
+#13 16.03 [ERROR] -> [Help 1]
+#13 16.03 [ERROR] 
+#13 16.03 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+#13 16.03 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+#13 16.03 [ERROR] 
+#13 16.03 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+#13 16.03 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+#13 ERROR: process "/bin/sh -c mvn -B clean package -DskipTests" did not complete successfully: exit code: 1
+------
+ > [build 6/6] RUN mvn -B clean package -DskipTests:
+16.03 [ERROR]   required: com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,com.fasterxml.jackson.databind.ObjectMapper,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+16.03 [ERROR]   found:    com.opsmind.core.remediation.RemediationRecommendationRepository,com.opsmind.core.remediation.RemediationExecutionRepository,com.opsmind.core.remediation.RunbookDefinitionRepository,com.opsmind.core.remediation.service.RemediationVerificationService,com.opsmind.core.kafka.EventPublisher,com.opsmind.core.audit.AuditService,java.util.List<com.opsmind.core.remediation.executor.RemediationExecutor>
+16.03 [ERROR]   reason: actual and formal argument lists differ in length
+16.03 [ERROR] -> [Help 1]
+16.03 [ERROR] 
+16.03 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+16.03 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+16.03 [ERROR] 
+16.03 [ERROR] For more information about the errors and possible solutions, please read the following articles:
+16.03 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+------
+Dockerfile:7
+
+--------------------
+
+   5 |     RUN mvn -B dependency:go-offline
+
+   6 |     COPY src ./src
+
+   7 | >>> RUN mvn -B clean package -DskipTests
+
+   8 |     
+
+   9 |     FROM eclipse-temurin:21-jre-alpine
+
+--------------------
+
+failed to solve: process "/bin/sh -c mvn -B clean package -DskipTests" did not complete successfully: exit code: 1
+

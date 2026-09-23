@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: ${ORDER_DB_URL:jdbc:postgresql://localhost:5433/order_db}
+    username: ${ORDER_DB_USER:order_svc}
+    password: ${ORDER_DB_PASSWORD:order_svc}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  kafka:
+    bootstrap-servers: ${ORDER_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+
+server:
+  port: ${SERVER_PORT:8093}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+  endpoint:
+    prometheus:
+      access: unrestricted
+
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  otlp:
+    tracing:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://otel-collector:4318/v1/traces}
+
+opsmind:
+  fault:
+    admin-token: ${FAULT_ADMIN_TOKEN:}
+
+  clients:
+    catalog-base-url: ${CATALOG_BASE_URL:http://localhost:8090}
+    payment-base-url: ${PAYMENT_BASE_URL:http://localhost:8091}
+    inventory-base-url: ${INVENTORY_BASE_URL:http://localhost:8092}
