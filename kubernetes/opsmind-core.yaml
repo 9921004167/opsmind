@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opsmind-core
+  namespace: opsmind
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opsmind-core
+  template:
+    metadata:
+      labels:
+        app: opsmind-core
+    spec:
+      containers:
+        - name: opsmind-core
+          image: opsmind-opsmind-core:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+            - name: SERVER_PORT
+              value: "8080"
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: POSTGRES_PASSWORD
+            - name: OPSMIND_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: OPSMIND_JWT_SECRET
+            - name: FAULT_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: FAULT_ADMIN_TOKEN
+            - name: OPSMIND_FAULTLAB_ENABLED
+              value: "false"
+            # Optional secret keys: the Deployment still starts if they are absent (Fault Lab then stays unusable / webhook rejects).
+            - name: OPSMIND_FAULTLAB_ALLOWED_ORGS
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: OPSMIND_FAULTLAB_ALLOWED_ORGS
+                  optional: true
+            - name: OPSMIND_WEBHOOK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: OPSMIND_WEBHOOK_TOKEN
+                  optional: true
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: GEMINI_API_KEY
+                  optional: true
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 20
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opsmind-core
+  namespace: opsmind
+spec:
+  selector:
+    app: opsmind-core
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

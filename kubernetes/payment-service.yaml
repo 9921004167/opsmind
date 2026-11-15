@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+  namespace: opsmind
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+        - name: payment-service
+          image: opsmind-payment-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8091
+          env:
+            - name: SERVER_PORT
+              value: "8091"
+            - name: PAYMENT_DB_URL
+              value: jdbc:postgresql://ecommerce-db:5432/payment_db
+            - name: PAYMENT_DB_USER
+              value: payment
+            - name: PAYMENT_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: PAYMENT_DB_PASSWORD
+            - name: PAYMENT_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:19092
+            - name: FAULT_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: FAULT_ADMIN_TOKEN
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8091
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8091
+            initialDelaySeconds: 60
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+  namespace: opsmind
+spec:
+  selector:
+    app: payment-service
+  ports:
+    - port: 8091
+      targetPort: 8091
+  type: ClusterIP

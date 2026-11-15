@@ -21,3 +21,8 @@
 # OS
 Thumbs.db
 .DS_Store
+
+# Kubernetes generated secrets
+opsmind-secret.yaml
+*.secret.yaml
+kubernetes/*secret*.yaml

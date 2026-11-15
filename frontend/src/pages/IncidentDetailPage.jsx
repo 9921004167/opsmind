@@ -7,6 +7,7 @@ import Loading from '../components/Loading';
 import ErrorBanner from '../components/ErrorBanner';
 import StatusBadge from '../components/StatusBadge';
 import SeverityBadge from '../components/SeverityBadge';
+import IncidentExtras from '../components/IncidentExtras';
 
 const TABS = ['Overview', 'Timeline', 'Investigation & RCA', 'Historical Incidents', 'Remediation'];
 
@@ -51,6 +52,8 @@ export default function IncidentDetailPage() {
           </div>
         </div>
       </div>
+
+      <IncidentExtras incident={incident} />
 
       <div className="tab-row">
         {TABS.map((t) => (

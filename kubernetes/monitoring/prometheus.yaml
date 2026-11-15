@@ -1,0 +1,37 @@
+# Opt-in monitoring for Kubernetes. Reuses the repo's compose config files (no duplicated rules):
+# run kubernetes-create-monitoring-configmaps.cmd first, then: kubectl apply -f kubernetes/monitoring/
+# Located in a subfolder so a non-recursive `kubectl apply -f kubernetes/` is unaffected.
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: prometheus, namespace: opsmind }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: prometheus } }
+  template:
+    metadata: { labels: { app: prometheus } }
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.55.1
+          args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=2d"]
+          ports: [{ containerPort: 9090 }]
+          readinessProbe: { httpGet: { path: /-/ready, port: 9090 }, initialDelaySeconds: 5, periodSeconds: 10 }
+          livenessProbe: { httpGet: { path: /-/healthy, port: 9090 }, initialDelaySeconds: 15, periodSeconds: 20 }
+          resources: { requests: { cpu: 100m, memory: 256Mi }, limits: { memory: 512Mi } }
+          volumeMounts: [{ name: config, mountPath: /etc/prometheus }]
+      volumes:
+        - name: config
+          configMap:
+            name: prometheus-config
+            items:
+              - { key: prometheus.yml, path: prometheus.yml }
+              - { key: alert_rules.yml, path: alert_rules.yml }
+              - { key: ecommerce-alerts.yml, path: alerts/ecommerce-alerts.yml }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: prometheus, namespace: opsmind }
+spec:
+  type: ClusterIP
+  selector: { app: prometheus }
+  ports: [{ port: 9090, targetPort: 9090 }]

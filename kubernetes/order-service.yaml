@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+  namespace: opsmind
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+        - name: order-service
+          image: opsmind-order-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8093
+          env:
+            - name: SERVER_PORT
+              value: "8093"
+            - name: ORDER_DB_URL
+              value: jdbc:postgresql://ecommerce-db:5432/order_db
+            - name: ORDER_DB_USER
+              value: order_svc
+            - name: ORDER_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: ORDER_DB_PASSWORD
+            - name: ORDER_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:19092
+            - name: CATALOG_BASE_URL
+              value: http://product-catalog-service:8090
+            - name: PAYMENT_BASE_URL
+              value: http://payment-service:8091
+            - name: INVENTORY_BASE_URL
+              value: http://inventory-service:8092
+            - name: FAULT_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opsmind-secrets
+                  key: FAULT_ADMIN_TOKEN
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8093
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8093
+            initialDelaySeconds: 60
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  namespace: opsmind
+spec:
+  selector:
+    app: order-service
+  ports:
+    - port: 8093
+      targetPort: 8093
+  type: ClusterIP

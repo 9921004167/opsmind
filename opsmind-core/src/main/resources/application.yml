@@ -43,6 +43,10 @@ server:
   port: ${OPSMIND_SERVER_PORT:8080}
 
 opsmind:
+  faultlab:
+    # OFF unless explicitly enabled; only listed organization IDs may run experiments.
+    enabled: ${OPSMIND_FAULTLAB_ENABLED:false}
+    allowed-org-ids: ${OPSMIND_FAULTLAB_ALLOWED_ORGS:}
   security:
     jwt:
       secret: ${OPSMIND_JWT_SECRET:}
@@ -115,5 +119,3 @@ incident-memory:
     weight-similarity: 0.75
     weight-service-overlap: 0.15
     weight-recency: 0.10
-
-

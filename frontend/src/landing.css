@@ -1,0 +1,40 @@
+:root {
+  --om-bg: #0b0e13; --om-surface: #131822; --om-border: #232a37;
+  --om-text: #e8ebf0; --om-muted: #98a1b0; --om-accent: #4cc9a6; --om-accent-ink: #06231b;
+  --om-up: #4cc9a6; --om-down: #f0616d; --om-unknown: #8a93a3;
+}
+.om-landing { background: var(--om-bg); color: var(--om-text); min-height: 100vh; scroll-behavior: smooth; }
+.om-landing a { color: inherit; }
+.om-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px clamp(16px, 5vw, 64px); border-bottom: 1px solid var(--om-border); position: sticky; top: 0; background: rgba(11,14,19,.92); backdrop-filter: blur(6px); z-index: 5; }
+.om-brand { font-weight: 700; letter-spacing: .02em; }
+.om-nav nav { display: flex; gap: 20px; font-size: 14px; flex-wrap: wrap; }
+.om-nav nav a { color: var(--om-muted); text-decoration: none; }
+.om-nav nav a:hover { color: var(--om-text); }
+.om-hero, .om-section { max-width: 1040px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) clamp(16px, 5vw, 32px) 24px; }
+.om-hero h1 { font-size: clamp(36px, 7vw, 68px); line-height: 1.05; margin: 0 0 20px; letter-spacing: -.02em; animation: om-rise .6s ease both; }
+.om-hero p { max-width: 640px; font-size: 18px; line-height: 1.6; color: var(--om-muted); animation: om-rise .6s .1s ease both; }
+.om-cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
+.om-btn { display: inline-block; padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; text-decoration: none; border: 1px solid transparent; }
+.om-landing .om-btn-primary { background: var(--om-accent); color: var(--om-accent-ink); }
+.om-landing .om-btn-secondary { border-color: var(--om-border); color: var(--om-text); background: transparent; }
+.om-btn:focus-visible, .om-landing a:focus-visible { outline: 2px solid var(--om-accent); outline-offset: 2px; }
+.om-live { border: 1px solid var(--om-border); background: var(--om-surface); border-radius: 10px; padding: 14px 18px; display: inline-block; min-width: 260px; }
+.om-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--om-muted); display: block; margin-bottom: 8px; }
+.om-health { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.om-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+.om-dot-up { background: var(--om-up); } .om-dot-down { background: var(--om-down); } .om-dot-unknown { background: var(--om-unknown); }
+.om-muted { color: var(--om-muted); font-size: 14px; line-height: 1.6; }
+.om-section h2 { font-size: 26px; margin: 0 0 8px; }
+.om-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 18px 0; }
+.om-card { background: var(--om-surface); border: 1px solid var(--om-border); border-radius: 10px; padding: 16px; font-size: 14px; }
+.om-card h3 { margin: 0 0 6px; font-size: 15px; }
+.om-steps { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 10px; counter-reset: s; }
+.om-steps li { counter-increment: s; display: grid; grid-template-columns: 28px 120px 1fr; gap: 8px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--om-border); }
+.om-steps li::before { content: counter(s); color: var(--om-accent); font-weight: 700; }
+.om-steps span { color: var(--om-muted); }
+.om-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; }
+.om-chips li { border: 1px solid var(--om-border); border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--om-muted); }
+.om-footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; max-width: 1040px; margin: 48px auto 0; padding: 24px clamp(16px, 5vw, 32px); border-top: 1px solid var(--om-border); color: var(--om-muted); font-size: 14px; }
+@keyframes om-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .om-hero h1, .om-hero p { animation: none; } .om-landing { scroll-behavior: auto; } }
+@media (max-width: 600px) { .om-steps li { grid-template-columns: 24px 1fr; } .om-steps span { grid-column: 2; } }

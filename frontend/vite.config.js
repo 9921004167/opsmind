@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  test: { environment: 'jsdom', globals: true },
   server: {
     // Only used for `npm run dev` outside Docker. Inside Docker the built
     // static files are served by nginx, which does the /api proxying instead

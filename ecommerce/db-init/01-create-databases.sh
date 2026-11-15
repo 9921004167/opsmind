@@ -10,7 +10,7 @@ create_db_and_user() {
   local db="$1"
   local user="$2"
   local pass="$3"
-  psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-SQL
+  psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-SQL
     CREATE USER ${user} WITH PASSWORD '${pass}';
     CREATE DATABASE ${db} OWNER ${user};
     GRANT ALL PRIVILEGES ON DATABASE ${db} TO ${user};

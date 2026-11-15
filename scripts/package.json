@@ -1,0 +1,6 @@
+{
+  "name": "opsmind-verification-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@electric-sql/pglite": "^0.2.0" }
+}
