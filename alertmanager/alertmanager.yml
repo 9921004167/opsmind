@@ -22,5 +22,5 @@ receivers:
       # exactly - see README "Phase 4". Proper secret management for this specific
       # config file (e.g. templating it at container start, or a network-level
       # control instead of a token) is Phase 17 (security hardening) work.
-      - url: "http://opsmind-core:8080/api/alerts/webhooks/alertmanager?token=cf482627673853d737a106373b238583ac6c3964eea8bc21245b60221590a9cd"
+      - url: "http://opsmind-core:8080/api/alerts/webhooks/alertmanager?token=dev-local-webhook-token-change-me"
         send_resolved: true
